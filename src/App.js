@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DeckSelection from "./components/DeckSelection";
 import Start from "./pages/Start";
 import "./styles/app.css";

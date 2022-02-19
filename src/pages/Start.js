@@ -2,37 +2,15 @@ import React, { useState, useEffect } from "react";
 import ReactCardFlip from "react-card-flip";
 import useAxios from "axios-hooks";
 import OnTheRocksFront from "./../components/OnTheRocks-Front";
-import OnTheRocksBack from "./../components/OnTheRocks-Back";
 import ExtraDirtyFront from "./../components/ExtraDirty-Front";
-import ExtraDirtyBack from "./../components/ExtraDirty-Back";
 import HappyHourFront from "./../components/HappyHour-Front";
-import HappyHourBack from "./../components/HappyHour-Back";
 import LastCallFront from "./../components/LastCall-Front";
-import LastCallBack from "./../components/LastCall-Back";
 import WithATwistFront from "./../components/WithATwist-Front";
-import WithATwistBack from "./../components/WithATwist-Back";
 import DefaultCardFront from "./../components/DefaultCard-Front";
-import DefaultCardBack from "../components/DefaultCard-Back";
+import CardBack from "../components/CardBack";
 import Loading from "./../components/Loading";
 import "./../styles/app.css";
 import Decks from "./../common/DeckType";
-
-function genCardBack(deck) {
-  switch (deck) {
-    case 1:
-      return <OnTheRocksBack />;
-    case 2:
-      return <ExtraDirtyBack />;
-    case 3:
-      return <HappyHourBack />;
-    case 4:
-      return <LastCallBack />;
-    case 5:
-      return <WithATwistBack />;
-    default:
-      return <DefaultCardBack />;
-  }
-}
 
 function genCardFront(deck, card) {
   if (deck == null) {
@@ -80,7 +58,7 @@ export default function Start(props) {
   }, [data]);
 
   useEffect(() => {
-    setCardBack(genCardBack(selectedDeck));
+    setCardBack(<CardBack deckType={selectedDeck} />);
     setCardFront(genCardFront(selectedDeck, currentCard));
   }, [selectedDeck, currentCard]);
 
