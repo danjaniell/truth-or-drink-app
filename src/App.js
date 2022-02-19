@@ -1,7 +1,18 @@
-import "./App.css";
+import React, { useState, useEffect } from "react";
+import DeckSelection from "./components/DeckSelection";
+import Start from "./pages/Start";
+import "./styles/app.css";
 
-function App() {
-  return <div className="App"></div>;
+export default function App() {
+  const [selectedDeck, setSelectedDeck] = useState("");
+  const deckSelectHandler = (data) => setSelectedDeck(data);
+
+  return (
+    <>
+      <DeckSelection onChange={deckSelectHandler} />
+      <div className="main-container">
+        <Start deck={selectedDeck} />
+      </div>
+    </>
+  );
 }
-
-export default App;
