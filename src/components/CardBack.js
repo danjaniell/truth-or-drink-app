@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import ProgressiveImage from "react-progressive-graceful-image";
 import def_back from "./../assets/base.png";
 import ed_back from "./../assets/ed.png";
 import hh_back from "./../assets/hh.png";
 import lc_back from "./../assets/lc.png";
 import otr_back from "./../assets/otr.png";
 import wat_back from "./../assets/wat.png";
+import tiny_image from "./../assets/tiny-image.png";
 import "./../styles/cards.css";
 
 export default function CardBack(props) {
@@ -37,7 +39,16 @@ export default function CardBack(props) {
 
   return (
     <div className="card-container">
-      <img className="card-back" src={cardBack} alt="back-of-the-card" />
+      <ProgressiveImage src={cardBack} placeholder={tiny_image}>
+        {(src, loading) => (
+          <img
+            className="card-back"
+            style={{ opacity: loading ? 0.4 : 1 }}
+            src={src}
+            alt="back-of-the-card"
+          />
+        )}
+      </ProgressiveImage>
     </div>
   );
 }
